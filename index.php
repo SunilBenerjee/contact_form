@@ -37,6 +37,8 @@
                 }else if(strlen($_POST['message']) <= 20){
                     echo "Please enter atleast 20 charaters in your message box.";
                     die();
+                }else if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                    echo "Please enter valid email format";
                 }else {
                     $conn = new mysqli("localhost", "root", "", "saloon");
                     $name = mysqli_real_escape_string($conn, $_POST['fullName']);
